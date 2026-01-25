@@ -55,16 +55,16 @@ namespace SystemSecurityFramework
 
         private void DisplayResult(string name, bool clean, IntPtr addr)
         {
-            // Read the first 4 bytes to display next to the status
+            
             byte[] shortDump = ReadMemory(addr, 4);
             string hexBytes = ConvertToHex(shortDump);
             
             string status = clean ? "NOT HOOKED" : "HOOKED";
             
-            // Format: >> FunctionName: STATUS [ Bytes ]
+            
             Console.WriteLine(string.Format(">> {0}: {1} [ {2} ]", name, status, hexBytes));
 
-            // If hooked, provide a more detailed dump below
+            
             if (!clean)
             {
                 byte[] fullDump = ReadMemory(addr, 32);
